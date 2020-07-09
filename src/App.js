@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Main from './Components/Main';
+import marked from 'marked';
+import "./Styles/styles.scss";
 
 function App() {
+  const [text,setText] = useState('');
+
+  const handleText = e  => {
+    const text = e.target.value;
+    setText(text);
+  }
+
+  const getMarkdownText = () => {
+    var rawMarkup = marked(text, {sanitize: true});
+    return { __html: rawMarkup };
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Main 
+    textContent = {text}
+    handleChange = {handleText} 
+    textResult = {getMarkdownText()}/>
   );
 }
 
