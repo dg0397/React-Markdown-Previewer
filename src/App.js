@@ -2,17 +2,29 @@ import React, {useState} from 'react';
 import Main from './Components/Main';
 import marked from 'marked';
 import "./Styles/styles.scss";
+import {data} from "./data";
+
 
 function App() {
-  const [text,setText] = useState('');
+  const [text,setText] = useState(data);
 
   const handleText = e  => {
     const text = e.target.value;
     setText(text);
   }
 
+  const expandScreen = (e) => {
+    const node = e.target.parentNode.parentNode 
+    node.classList.toggle('active')
+  }
+
   const getMarkdownText = () => {
-    var rawMarkup = marked(text, {sanitize: true});
+    const objConfig = {
+      sanatize:true,
+      breaks : true,
+      gfm : true
+    }
+    var rawMarkup = marked(text, objConfig);
     return { __html: rawMarkup };
   }
 
@@ -20,7 +32,8 @@ function App() {
     <Main 
     textContent = {text}
     handleChange = {handleText} 
-    textResult = {getMarkdownText()}/>
+    textResult = {getMarkdownText()}
+    handleClick = {expandScreen}/>
   );
 }
 
