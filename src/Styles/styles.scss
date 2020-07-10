@@ -1,4 +1,7 @@
 @import "./modules-scss/variables";
+@import "./modules-scss/header";
+@import "./modules-scss/containers";
+@import "./modules-scss/footer";
 *{
     margin: 0;
     padding: 0;
@@ -11,86 +14,6 @@ body{
     /*Color top 2c3e50*/
     /*Color inner Block 95a5a6 or 7f8c8d*/
 }
-
-.container{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 20px;
-    height: 100vh;
-    min-width: 320px;
-    
-    .container_frame{
-        display: flex;
-        flex-direction: column;
-        margin: 1rem auto;
-        width: 80%;
-        background: $inner-block-color;
-        border-radius: 1rem;
-        box-shadow: 0 0 10px #1c1c1c;
-        transition: all 0.5s ;
-        @media screen and (min-width:1024px ) {
-            width: 90%;
-            height: 50vh;
-        }
-    }
-    @media screen and (min-width:1024px ) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        align-items: center;
-    }
-}
-
-#container__editor{
-    textarea{
-        width: 100%;
-        flex: 1;
-        border-radius: 0 0 .5rem .5rem ;
-        resize: none;
-    }
-}
-
-#container__screen{
-    height: 50vh;
-    #preview{
-        width: 100%;
-        overflow: scroll;
-        border-radius: 0 0 .5rem .5rem ;
-    }
-}
-
-header{
-    display: flex;
-    align-items: center;
-    background-color: #2c3e50;
-    border-radius: .5rem .5rem 0 0 ;
-    padding: .2rem 1rem;
-    .container_logo{
-        width: 1.5rem;
-        margin-right: 1rem;
-        display: flex;
-        img{
-            width: 100%;
-        }
-    }
-    h1{
-        flex: auto;
-        font-weight: $font-w-normal;
-        font-style: italic;
-        color: aliceblue;
-        text-shadow: 5px 5px 10px #1c1c1c;
-    }
-    #expand-icon{
-        color: aliceblue;
-        &:hover{
-            color: #c1c1c1;
-            cursor: pointer;
-        }
-    }
-}
-
-
-
 
 .active{
     position: fixed;
